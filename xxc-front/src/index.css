@@ -1,52 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #8B5E3C;
-  --color-primary-light: #C4986B;
-  --color-primary-dark: #5C3D22;
-  --color-bg: #FAF7F2;
-  --color-bg-secondary: #F0EBE3;
+  --color-primary: #2F6F73;
+  --color-primary-light: #8FC1B5;
+  --color-primary-dark: #1F4E5A;
+  --color-bg: #F6F8F5;
+  --color-bg-secondary: #E9EFEC;
   --color-surface: #FFFFFF;
-  --color-text: #2C1810;
-  --color-text-secondary: #6B4A35;
-  --color-text-muted: #A08070;
-  --color-accent: #D4843C;
-  --color-accent-green: #5C7A4E;
-  --color-border: #E0D5C8;
+  --color-text: #1B2A2F;
+  --color-text-secondary: #3E5A60;
+  --color-text-muted: #566E73;
+  --color-accent: #B4552F;
+  --color-accent-green: #4F7D5C;
+  --color-border: #D5DFDB;
 
   --font-heading: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', system-ui, sans-serif;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/* Kept in the base layer so Tailwind utilities (e.g. text-white) can override them */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  margin: 0;
-  font-family: 'Inter', system-ui, sans-serif;
-  background-color: #FAF7F2;
-  color: #2C1810;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #F6F8F5;
+    color: #1B2A2F;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-#root {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-}
+  #root {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', Georgia, serif;
-  line-height: 1.2;
-  color: #2C1810;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    line-height: 1.2;
+    color: #1B2A2F;
+  }
 }

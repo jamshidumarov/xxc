@@ -6,18 +6,19 @@ import { motion } from 'framer-motion'
 import { contactApi } from '../lib/api'
 import SectionTitle from '../components/ui/SectionTitle'
 import { useLang } from '../i18n/index.jsx'
+import Icon from '../components/ui/Icon'
 
 const inputStyle = {
   width: '100%', padding: '10px 14px', borderRadius: '10px',
-  border: '1px solid #E0D5C8', background: '#FFFFFF', color: '#2C1810',
+  border: '1px solid #D5DFDB', background: '#FFFFFF', color: '#1B2A2F',
   fontSize: '14px', outline: 'none', transition: 'border-color 0.2s',
 }
 
 function Field({ label, error, children, required }) {
   return (
     <div>
-      <label className="block text-sm font-medium mb-1.5" style={{ color: '#2C1810' }}>
-        {label}{required && <span style={{ color: '#D4843C' }}> *</span>}
+      <label className="block text-sm font-medium mb-1.5" style={{ color: '#1B2A2F' }}>
+        {label}{required && <span style={{ color: '#B4552F' }}> *</span>}
       </label>
       {children}
       {error && <p className="mt-1 text-xs" style={{ color: '#C0392B' }}>{error}</p>}
@@ -65,13 +66,13 @@ export default function Contact() {
 
   return (
     <main className="pt-20">
-      <section className="py-16 px-4" style={{ background: '#F0EBE3' }}>
+      <section className="py-16 px-4" style={{ background: '#E9EFEC' }}>
         <div className="max-w-7xl mx-auto">
-          <SectionTitle subtitle={t.contact.subtitle} title={t.contact.title} description={t.contact.desc} />
+          <SectionTitle as="h1" subtitle={t.contact.subtitle} title={t.contact.title} description={t.contact.desc} />
         </div>
       </section>
 
-      <section className="py-16 px-4" style={{ background: '#FAF7F2' }}>
+      <section className="py-16 px-4" style={{ background: '#F6F8F5' }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
             {/* Form */}
@@ -79,42 +80,42 @@ export default function Contact() {
               {success ? (
                 <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
                   className="rounded-2xl p-10 text-center"
-                  style={{ background: '#FFFFFF', border: '1px solid #E0D5C8' }}>
-                  <div className="text-5xl mb-4">✅</div>
-                  <h3 className="text-2xl font-bold mb-2" style={{ fontFamily: "'Playfair Display', serif", color: '#2C1810' }}>
+                  style={{ background: '#FFFFFF', border: '1px solid #D5DFDB' }}>
+                  <Icon name="checkCircle" size={56} strokeWidth={1.5} className="mx-auto mb-4" style={{ color: '#4F7D5C' }} />
+                  <h3 className="text-2xl font-bold mb-2" style={{ fontFamily: "'Playfair Display', serif", color: '#1B2A2F' }}>
                     {t.contact.successTitle}
                   </h3>
-                  <p className="text-sm mb-6" style={{ color: '#6B4A35' }}>{t.contact.successDesc}</p>
-                  <button onClick={() => setSuccess(false)} className="px-6 py-2 rounded-xl text-sm font-medium text-white" style={{ background: '#8B5E3C' }}>
+                  <p className="text-sm mb-6" style={{ color: '#3E5A60' }}>{t.contact.successDesc}</p>
+                  <button onClick={() => setSuccess(false)} className="px-6 py-2 rounded-xl text-sm font-medium text-white" style={{ background: '#2F6F73' }}>
                     {t.contact.newRequest}
                   </button>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="rounded-2xl p-8 space-y-5"
-                  style={{ background: '#FFFFFF', border: '1px solid #E0D5C8' }}>
+                  style={{ background: '#FFFFFF', border: '1px solid #D5DFDB' }}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <Field label={t.contact.name} error={errors.name?.message} required>
-                      <input {...register('name')} placeholder="Alisher Karimov" style={inputStyle}
-                        onFocus={e => (e.target.style.borderColor = '#8B5E3C')}
-                        onBlur={e => (e.target.style.borderColor = '#E0D5C8')} />
+                      <input {...register('name')} placeholder={t.contact.namePlaceholder} style={inputStyle}
+                        onFocus={e => (e.target.style.borderColor = '#2F6F73')}
+                        onBlur={e => (e.target.style.borderColor = '#D5DFDB')} />
                     </Field>
                     <Field label={t.contact.phone} error={errors.phone?.message} required>
                       <input {...register('phone')} placeholder="+998 90 123 45 67" type="tel" style={inputStyle}
-                        onFocus={e => (e.target.style.borderColor = '#8B5E3C')}
-                        onBlur={e => (e.target.style.borderColor = '#E0D5C8')} />
+                        onFocus={e => (e.target.style.borderColor = '#2F6F73')}
+                        onBlur={e => (e.target.style.borderColor = '#D5DFDB')} />
                     </Field>
                   </div>
 
                   <Field label={t.contact.email} error={errors.email?.message}>
                     <input {...register('email')} placeholder="email@example.com" type="email" style={inputStyle}
-                      onFocus={e => (e.target.style.borderColor = '#8B5E3C')}
-                      onBlur={e => (e.target.style.borderColor = '#E0D5C8')} />
+                      onFocus={e => (e.target.style.borderColor = '#2F6F73')}
+                      onBlur={e => (e.target.style.borderColor = '#D5DFDB')} />
                   </Field>
 
                   <Field label={t.contact.type} error={errors.type?.message} required>
                     <select {...register('type')} style={{ ...inputStyle, cursor: 'pointer' }}
-                      onFocus={e => (e.target.style.borderColor = '#8B5E3C')}
-                      onBlur={e => (e.target.style.borderColor = '#E0D5C8')}>
+                      onFocus={e => (e.target.style.borderColor = '#2F6F73')}
+                      onBlur={e => (e.target.style.borderColor = '#D5DFDB')}>
                       {Object.entries(t.contact.types).map(([val, label]) => (
                         <option key={val} value={val}>{label}</option>
                       ))}
@@ -124,17 +125,17 @@ export default function Contact() {
                   <Field label={t.contact.message} error={errors.message?.message}>
                     <textarea {...register('message')} rows={5}
                       style={{ ...inputStyle, resize: 'vertical', minHeight: '120px' }}
-                      onFocus={e => (e.target.style.borderColor = '#8B5E3C')}
-                      onBlur={e => (e.target.style.borderColor = '#E0D5C8')} />
+                      onFocus={e => (e.target.style.borderColor = '#2F6F73')}
+                      onBlur={e => (e.target.style.borderColor = '#D5DFDB')} />
                   </Field>
 
                   <div>
-                    <label className="block text-sm font-medium mb-1.5" style={{ color: '#2C1810' }}>
-                      {t.contact.attach} <span style={{ color: '#A08070' }}>{t.contact.attachHint}</span>
+                    <label className="block text-sm font-medium mb-1.5" style={{ color: '#1B2A2F' }}>
+                      {t.contact.attach} <span style={{ color: '#566E73' }}>{t.contact.attachHint}</span>
                     </label>
                     <label className="flex items-center justify-center gap-3 p-5 rounded-xl cursor-pointer transition-colors"
-                      style={{ border: '2px dashed #E0D5C8', background: '#FAF7F2', color: '#A08070' }}>
-                      <span className="text-2xl">📎</span>
+                      style={{ border: '2px dashed #D5DFDB', background: '#F6F8F5', color: '#566E73' }}>
+                      <Icon name="paperclip" size={22} />
                       <span className="text-sm">
                         {files.length > 0 ? t.contact.attachSelected(files.length) : t.contact.attachBtn}
                       </span>
@@ -149,7 +150,7 @@ export default function Contact() {
 
                   <button type="submit" disabled={submitting}
                     className="w-full py-3.5 rounded-xl text-white font-semibold text-base transition-all hover:-translate-y-0.5 disabled:opacity-60"
-                    style={{ background: '#8B5E3C' }}>
+                    style={{ background: '#2F6F73' }}>
                     {submitting ? t.contact.sending : t.contact.submit}
                   </button>
                 </form>
@@ -158,20 +159,22 @@ export default function Contact() {
 
             {/* Contact info */}
             <div className="lg:col-span-2 space-y-6">
-              <div className="rounded-2xl p-7" style={{ background: '#FFFFFF', border: '1px solid #E0D5C8' }}>
-                <h3 className="text-xl font-bold mb-5" style={{ fontFamily: "'Playfair Display', serif", color: '#2C1810' }}>
+              <div className="rounded-2xl p-7" style={{ background: '#FFFFFF', border: '1px solid #D5DFDB' }}>
+                <h3 className="text-xl font-bold mb-5" style={{ fontFamily: "'Playfair Display', serif", color: '#1B2A2F' }}>
                   {t.contact.infoTitle}
                 </h3>
                 <ul className="space-y-4">
                   {t.contact.contactItems.map(c => (
                     <li key={c.label} className="flex items-start gap-3">
-                      <span className="text-xl">{c.icon}</span>
+                      <span className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#E9EFEC', color: '#2F6F73' }}>
+                        <Icon name={c.icon} size={18} />
+                      </span>
                       <div>
-                        <div className="text-xs font-medium uppercase tracking-wider" style={{ color: '#A08070' }}>{c.label}</div>
+                        <div className="text-xs font-medium uppercase tracking-wider" style={{ color: '#566E73' }}>{c.label}</div>
                         {c.href ? (
-                          <a href={c.href} target="_blank" rel="noreferrer" className="text-sm font-medium hover:underline" style={{ color: '#8B5E3C' }}>{c.value}</a>
+                          <a href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" className="text-sm font-medium hover:underline" style={{ color: '#2F6F73' }}>{c.value}</a>
                         ) : (
-                          <div className="text-sm font-medium" style={{ color: '#2C1810' }}>{c.value}</div>
+                          <div className="text-sm font-medium" style={{ color: '#1B2A2F' }}>{c.value}</div>
                         )}
                       </div>
                     </li>
@@ -179,11 +182,11 @@ export default function Contact() {
                 </ul>
               </div>
 
-              <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid #E0D5C8', height: '220px', background: '#F0EBE3' }}>
-                <div className="w-full h-full flex flex-col items-center justify-center gap-2" style={{ color: '#A08070' }}>
-                  <span className="text-4xl">📍</span>
+              <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid #D5DFDB', height: '220px', background: '#E9EFEC' }}>
+                <div className="w-full h-full flex flex-col items-center justify-center gap-2" style={{ color: '#566E73' }}>
+                  <Icon name="mapPin" size={40} strokeWidth={1.5} />
                   <p className="text-sm">{t.contact.location}</p>
-                  <p className="text-xs" style={{ color: '#C4986B' }}>{t.contact.locationSoon}</p>
+                  <p className="text-xs" style={{ color: '#2F6F73' }}>{t.contact.locationSoon}</p>
                 </div>
               </div>
             </div>
